@@ -1,0 +1,29 @@
+
+.bg-gray{
+	background: #e0e0e0 ;
+}
+
+.account-btn{
+	background: #e0e0e0;
+	border-radius: 50% !important;
+	padding: 13px 15px;
+}
+
+.nav-search{
+	background: #e0e0e0;
+	padding: 13px 20px;
+	
+
+	@media (min-width: 670px) {
+		 min-width: 380px;
+	}
+
+	@media (max-width: 669px) {
+		display: block !important;
+	}
+}
+
+.inventory-title{
+	font-family: Arial !important;
+
+}

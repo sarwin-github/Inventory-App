@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngBoiler": {
+    "inventoryApp": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -63,18 +63,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngBoiler:build"
+            "browserTarget": "inventoryApp:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngBoiler:build:production"
+              "browserTarget": "inventoryApp:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngBoiler:build"
+            "browserTarget": "inventoryApp:build"
           }
         },
         "test": {
@@ -111,7 +111,7 @@
         }
       }
     },
-    "ngBoiler-e2e": {
+    "inventoryApp-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -119,11 +119,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngBoiler:serve"
+            "devServerTarget": "inventoryApp:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngBoiler:serve:production"
+              "devServerTarget": "inventoryApp:serve:production"
             }
           }
         },
@@ -139,5 +139,13 @@
       }
     }
   },
-  "defaultProject": "ngBoiler"
+  "defaultProject": "inventoryApp",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    },
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
+    }
+  }
 }

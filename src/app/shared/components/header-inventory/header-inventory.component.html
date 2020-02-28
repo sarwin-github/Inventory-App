@@ -1,0 +1,82 @@
+<!-- Bootstrap row -->
+<div class="row " id="body-row">
+    <!-- Sidebar -->
+    <div id="sidebar-container" class="sidebar-expanded"><!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+        <!-- Bootstrap List Group -->
+        <ul class="list-group">
+            <a class="sidebar-item list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <img src="/assets/images/logo.svg" width="120px" id="logo">
+                </div>
+            </a>
+
+            <!-- Menu with submenu -->
+            <a aria-expanded="false" data-toggle="sidebar-colapse" (click)="SidebarCollapse()" class="sidebar-item list-group-item list-group-item-action d-flex align-items-center close mt-3">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+                </div>
+            </a>
+
+            <a class="sidebar-item list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <img src="/assets/images/icons/analytics.png" class="img img-fluid" width="25px">
+                    <span class="menu-collapsed">Dashboard</span>    
+                </div>
+            </a>
+
+            <a class="sidebar-item list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <img src="/assets/images/icons/database.png" class="img img-fluid" width="25px">
+                    <span class="menu-collapsed">Data</span>    
+                </div>
+            </a>
+
+            <a class="sidebar-item list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <img src="/assets/images/icons/procedure.png" class="img img-fluid" width="25px">
+                    <span class="menu-collapsed">Planning</span>    
+                </div>
+            </a>
+
+            <a href="#submenu2" data-toggle="collapse" aria-expanded="false" class="sidebar-item list-group-item list-group-item-action flex-column align-items-start selected">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <img src="/assets/images/icons/trolley.png" class="img img-fluid" width="25px">
+                    <span class="menu-collapsed">Inventory</span>
+                    <!-- <span class="submenu-icon ml-auto"></span> -->
+                </div>
+            </a>
+
+            <!-- Submenu content -->
+            <div id='submenu2' class="collapse sidebar-submenu">
+                <a class="list-group-item list-group-item-action sidebar-item">
+                    <span class="menu-collapsed">WH Allocation</span>
+                </a>
+                <a class="list-group-item list-group-item-action sidebar-item">
+                    <span class="menu-collapsed">PO Allocation</span>
+                </a>
+
+                <a class="list-group-item list-group-item-action sidebar-item">
+                    <span class="menu-collapsed">Allocations</span>
+                </a>
+
+                <a class="list-group-item list-group-item-action sidebar-item">
+                    <span class="menu-collapsed">Replenishment</span>
+                </a>
+            </div>  
+
+            <a class="sidebar-item list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-start align-items-center">
+                    <img src="/assets/images/icons/account.png" class="img img-fluid" width="25px">
+                    <span class="menu-collapsed">Accounts</span>    
+                </div>
+            </a>
+                      
+            
+        </ul><!-- List Group END-->
+    </div><!-- sidebar-container END -->
+
+    <!-- MAIN -->
+    <div class="col bg-gray" id="body-col">
+        <router-outlet></router-outlet>
+    </div><!-- Main Col END -->
+</div><!-- body-row END -->

@@ -5,12 +5,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { HeaderComponent } from './components/header/header.component'
+import { HeaderComponent } from './components/header/header.component';
+import { HeaderInventoryComponent } from './components/header-inventory/header-inventory.component';
 import { HttpClientModule } from '@angular/common/http';
 
 const classesToInclude = [
   HeaderComponent,
-  
+  HeaderInventoryComponent
 ]
 
 @NgModule({
