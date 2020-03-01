@@ -73,9 +73,9 @@ export class WarehouseItemsComponent implements OnInit {
       if(!list) return null;
       if(!args) return list;
 
-      args = args.toLowerCase();
+      args = args;
 
-      return list.filter((item) => JSON.stringify(item).toLowerCase().includes(args));
+      return list.filter((item) => JSON.stringify(item).includes(args));
   	}
 
   	adjustDensity(direction){
