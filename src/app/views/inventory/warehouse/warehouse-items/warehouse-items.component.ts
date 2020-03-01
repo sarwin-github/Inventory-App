@@ -58,17 +58,21 @@ export class WarehouseItemsComponent implements OnInit {
   		this.selectedColumns = this.warehouseItemHeader;
   	}
 
+  	// reload items
   	reloadItems(){
-  		console.log(this.selectedFilter)
-  		if(this.selectedFilter.length === 0)
-  			this.warehouseItems = this.oldList;
+  		let newList = [];
 
   		this.selectedFilter.forEach(el => {
-  			console.log(el)
-  			this.warehouseItems = this.filterItem(this.oldList, el.filter);
+  			newList = [...newList, ...this.filterItem(this.oldList, el.filter)]
   		});
+
+  		this.warehouseItems = new Set([...newList]);
+
+  		if(this.selectedFilter.length === 0)
+  			this.warehouseItems = this.oldList;
   	}
 
+  	// filter items
   	filterItem(list: any, args?: any): any {
       if(!list) return null;
       if(!args) return list;
