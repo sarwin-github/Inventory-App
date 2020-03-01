@@ -16,6 +16,8 @@ export class WarehouseComponent implements OnInit, OnDestroy {
 	public warehouseTotal: {}[]= [];
 	public warehouseItems: {}[]= [];
 
+	public globalSearch: string;
+
 	constructor(private warehouseService: WarehouseService,
 		) { }
 

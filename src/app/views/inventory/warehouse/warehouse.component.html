@@ -3,7 +3,8 @@
         <ul class="navbar-nav mr-auto"></ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control nav-search mr-4" type="search"
-             placeholder="&#xF002; search" 
+             placeholder="&#xF002; search" [(ngModel)]="globalSearch"
+             [ngModelOptions]="{standalone: true}"
              style="font-family:Arial, FontAwesome" aria-label="Search">
             <button class="btn btn-default my-2 account-btn" type="submit">
             AJ</button>
@@ -29,7 +30,7 @@
         <!-- Warehouse total table -->
         <div class="col-12 col-lg-9 pl-lg-5">
             <app-warehouse-total 
-            [warehouseTotal]="warehouseTotal">
+            [warehouseTotal]="warehouseTotal | waItemsFilterPipe: globalSearch">
             </app-warehouse-total>
         </div>
     </div>
@@ -39,7 +40,7 @@
             <!-- WAREHOUSE ITEMS -->
             <app-warehouse-items 
             *ngIf="warehouseItems?.length > 0"
-            [warehouseItems]="warehouseItems">  
+            [warehouseItems]="warehouseItems | waItemsFilterPipe: globalSearch">  
             </app-warehouse-items>
         </div>
     </div>
