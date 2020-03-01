@@ -8,7 +8,12 @@ import { mainAnimations } from '../../../../shared/animations/main-animations';
 })
 export class WarehouseItemsComponent implements OnInit {
 	@Input() warehouseItems: any;
-  	constructor() { }
+
+	public oldList: any[];
+	public newList: any[];
+
+  	constructor() { 
+  	}
 
   	public warehouseItemHeader;
   	public selectedColumns: any[];
@@ -38,20 +43,39 @@ export class WarehouseItemsComponent implements OnInit {
   			{ field: 'subcategory', header: 'Subcategory', class: 'info-sub' }
   		];
 
+  		this.oldList = this.warehouseItems;
+  		this.newList = this.warehouseItems; 
+
   		this.filterBy = [
   			{ filter: 'Womens' },
   			{ filter: 'Mens' },
   			{ filter: 'REG' },
   			{ filter: 'MD1' }
-  		]
+  		];
 
   		this.selectedFilter = [];
   		this.listColumns = this.warehouseItemHeader;
   		this.selectedColumns = this.warehouseItemHeader;
   	}
 
-  	toggleColums(){
+  	reloadItems(){
+  		console.log(this.selectedFilter)
+  		if(this.selectedFilter.length === 0)
+  			this.warehouseItems = this.oldList;
 
+  		this.selectedFilter.forEach(el => {
+  			console.log(el)
+  			this.warehouseItems = this.filterItem(this.oldList, el.filter);
+  		});
+  	}
+
+  	filterItem(list: any, args?: any): any {
+      if(!list) return null;
+      if(!args) return list;
+
+      args = args.toLowerCase();
+
+      return list.filter((item) => JSON.stringify(item).toLowerCase().includes(args));
   	}
 
   	adjustDensity(direction){

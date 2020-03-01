@@ -8,7 +8,7 @@
                 [style]="{minWidth: '120px' }"
                 [options]="filterBy"
                 [(ngModel)]="selectedFilter" 
-                (select)="dt.filterGlobal($event.target.value, 'contains')"
+                (ngModelChange)="reloadItems()"
                 selectedItemsLabel="Filter By" 
                 defaultLabel="Filter By"
                 optionLabel="filter"></p-multiSelect>
@@ -125,6 +125,7 @@
         selectionMode="multiple" 
         [(selection)]="selectedItems"
         >
+
         <ng-template pTemplate="header" let-columns>
           <tr>
             <th class="info-main" style="width:100px;">
@@ -135,12 +136,12 @@
               {{col.header}}
             </th>
 
-            <th class="info-main" style="width:100px;">Action</th>
+            <th class="info-main" style="width:70px;">Action</th>
           </tr>
         </ng-template>
 
-        <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
-            <tr [pSelectableRow]="rowData" >
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="index">
+            <tr *ngIf="selectedColumns?.length > 0">
               <!-- SELECTOR -->
               <td class="info-main">
                   <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
@@ -150,20 +151,23 @@
                 [ngClass]="(col.field !== 'unreleasedAllocation'
                 && col.field !== 'scheduledRelease' 
                 && col.field !== 'styleCode' 
-                && col.field !== 'styleName' ) && selectedItems?.indexOf(rowData) > -1 ? '' : 'info-main'"
+                && col.field !== 'styleName' )  ? '' : 'info-main'"
               >
                   {{rowData[col.field]}} 
               </td>
 
-              <td style="width: 100px !important;">
-                <i class="ml-3 fa fa-ellipsis-v" id="itemAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100% !important;"></i>
+              <td style="width: 70px !important;" 
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown-action-table">
+                  <i class="ml-3 fa fa-ellipsis-v" id="index"></i>
 
-                <div class="dropdown-menu" aria-labelledby="itemAction">
-                  <a class="dropdown-item">New Alloc</a>
-                  <a class="dropdown-item">View Alloc</a>
-                  <a class="dropdown-item">Merge Alloc</a>
-                  <a class="dropdown-item">Release</a>
-                  <a class="dropdown-item">Del. Alloc</a>
+                  <div class="dropdown-menu p-0" aria-labelledby="index">
+                    <a class="dropdown-item">New Alloc</a>
+                    <a class="dropdown-item">View Alloc</a>
+                    <a class="dropdown-item">Merge Alloc</a>
+                    <a class="dropdown-item">Release</a>
+                    <a class="dropdown-item">Del. Alloc</a>
+                  </div>
                 </div>
               </td>
             </tr>
