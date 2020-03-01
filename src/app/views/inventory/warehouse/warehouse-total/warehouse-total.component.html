@@ -1,52 +1,55 @@
 <div class="text-right mb-2">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle text-capitalize" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-      options
-    </button>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Option 1</a>
-      <a class="dropdown-item" href="#">Option 2</a>
-      <a class="dropdown-item" href="#">Option 3</a>
-    </div>
-  </div>
+	<div class="dropdown">
+		<button class="btn btn-secondary dropdown-toggle text-capitalize" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+			options
+		</button>
+		<div class="dropdown-menu">
+			<a class="dropdown-item" href="#">Option 1</a>
+			<a class="dropdown-item" href="#">Option 2</a>
+			<a class="dropdown-item" href="#">Option 3</a>
+		</div>
+	</div>
 </div>
 
-<div class="card card-body" style="overflow: auto;">
-  <p-table [value]="warehouseTotal">
-      <ng-template pTemplate="header">
-          <tr>
-              <th rowspan="3" class="sticky-col-first">Inventory</th>
-          </tr>
-          <tr>
-              <th class="odd-col" colspan="2">Retail Warehouse</th>
-              <th colspan="3">Retail Store</th>
-              <th class="odd-col" colspan="3">Retail Total</th>
-          </tr>
-          <tr>
-              <th class="odd-col">Cost on Hand</th>
-              <th class="odd-col">Retail on Hand</th>
-              <th>Cost on Hand</th>
-              <th>Retail on Hand</th>
-              <th>Weeks Cover</th>
-              <th class="odd-col">Cost on Hand</th>
-              <th class="odd-col">Retail on Hand</th>
-              <th class="odd-col">Weeks Cover</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-item>
-          <tr>
-              <td>{{item.inventory}}</td>
-              <td>{{item.retailWarehouse.costOnHand.toLocaleString()}}</td>
-              <td>{{item.retailWarehouse.retailOnHand.toLocaleString()}}</td>
+<div class="card card-body">
+  <div style="overflow-x: auto; width: 100% !important;">
+    <p-table class="wa-total" [value]="warehouseTotal">
+        <ng-template pTemplate="header">
+            <tr>
+                <th rowspan="3" class="sticky-col-first">Inventory</th>
+            </tr>
+            <tr>
+                <th class="odd-col" colspan="2">Retail Warehouse</th>
+                <th colspan="3">Retail Store</th>
+                <th class="odd-col" colspan="3">Retail Total</th>
+            </tr>
+            <tr>
+                <th class="odd-col">Cost on Hand</th>
+                <th class="odd-col">Retail on Hand</th>
+                <th>Cost on Hand</th>
+                <th>Retail on Hand</th>
+                <th>Weeks Cover</th>
+                <th class="odd-col">Cost on Hand</th>
+                <th class="odd-col">Retail on Hand</th>
+                <th class="odd-col">Weeks Cover</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>{{item.inventory}}</td>
+                <td>{{item.retailWarehouse.costOnHand.toLocaleString()}}</td>
+                <td>{{item.retailWarehouse.retailOnHand.toLocaleString()}}</td>
 
-              <td>{{item.retailStores.costOnHand.toLocaleString()}}</td>
-              <td>{{item.retailStores.retailOnHand.toLocaleString()}}</td>
-              <td>{{item.retailStores.weeksCover}}</td>
-              
-              <td>{{item.retailTotal.costOnHand.toLocaleString()}}</td>
-              <td>{{item.retailTotal.retailOnHand.toLocaleString()}}</td>
-              <td>{{item.retailTotal.weeksCover}}</td>
-          </tr>
-      </ng-template>
-  </p-table>
+                <td>{{item.retailStores.costOnHand.toLocaleString()}}</td>
+                <td>{{item.retailStores.retailOnHand.toLocaleString()}}</td>
+                <td>{{item.retailStores.weeksCover}}</td>
+                
+                <td>{{item.retailTotal.costOnHand.toLocaleString()}}</td>
+                <td>{{item.retailTotal.retailOnHand.toLocaleString()}}</td>
+                <td>{{item.retailTotal.weeksCover}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+  
 </div>

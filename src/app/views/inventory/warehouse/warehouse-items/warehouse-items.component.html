@@ -1,42 +1,157 @@
-<div class="card card-body" style="height: 300px; overflow-y: auto;">
-    <div>
+<div class="card card-body">
+    <div class="d-none d-sm-none d-md-block">
         <div class="float-left">
-            <button class="btn btn-outline-primary">Filter By</button>
+            <div class="text-right mb-2">
+            	<div class="pl-0">
+            		<p-multiSelect 
+                [style]="{minWidth: '100px', border: 'none'}"
+                [options]="listColumns"
+                [(ngModel)]="selectedColumns" 
+                selectedItemsLabel="Filter By" 
+                defaultLabel="Filter By"
+                optionLabel="header"></p-multiSelect>
+            	</div>
+            </div>
         </div>
+
         <div class="float-right">
-            <button class="btn btn-outline-primary mr-3">Density</button>
-            <button class="btn btn-outline-primary">Columns</button>
+            <div class="text-right mb-2">
+              <span style="top: 5; position: absolute; right: 120px;">
+                  <button class="btn btn-secondary text-capitalize" type="button"
+                  (click)="adjustDensity('minus')">
+                    <i class="fa fa-minus"></i>
+                  </button>
+
+                  <span> Density </span>
+
+                  <button class="btn btn-secondary text-capitalize" type="button" 
+                  (click)="adjustDensity('plus')">
+                    <i class="fa fa-plus"></i>
+                  </button>  
+              </span>
+
+            	 <p-multiSelect 
+                [style]="{minWidth: '100px', border: 'none'}"
+                [options]="listColumns"
+                [(ngModel)]="selectedColumns" 
+                selectedItemsLabel="Columns" 
+                defaultLabel="Columns"
+                optionLabel="header"></p-multiSelect>
+            </div>
         </div>
     </div>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="d-block d-sm-block d-md-none text-center">
+        <div class="d-block">
+          <div class="pl-0">
+            <p-multiSelect 
+            [style]="{minWidth: '100px', border: 'none'}"
+            [options]="listColumns"
+            [(ngModel)]="selectedColumns" 
+            selectedItemsLabel="Filter By" 
+            defaultLabel="Filter By"
+            optionLabel="header"></p-multiSelect>
+          </div>
+        </div>
+
+        <div class="d-block">
+          <div>
+            <button class="btn btn-secondary text-capitalize" type="button"
+            (click)="adjustDensity('minus')">
+              <i class="fa fa-minus"></i>
+            </button>
+
+            <span> Density </span>
+
+            <button class="btn btn-secondary text-capitalize" type="button" 
+            (click)="adjustDensity('plus')">
+              <i class="fa fa-plus"></i>
+            </button>  
+          </div>
+        </div>
+
+        <div class="d-block">
+         <p-multiSelect 
+          [style]="{minWidth: '100px', border: 'none'}"
+          [options]="listColumns"
+          [(ngModel)]="selectedColumns" 
+          selectedItemsLabel="Columns" 
+          defaultLabel="Columns"
+          optionLabel="header"></p-multiSelect>
+        </div>
+    </div>
+
+    <div class="bg-selected mb-2 pt-2 pb-1 p2-3 text-white selected-rows" 
+    *ngIf="selectedItems?.length > 0"
+    [@animate]="{value:'*', params:{ scale:'.9', delay:'400ms' }}">
+      <div class="float-left">
+        <button class="btn btn-secondary text-capitalize">{{selectedItems?.length}} Rows Selected</button>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-secondary text-capitalize" type="button">
+          New Allocation
+        </button>
+
+        <button class="btn btn-secondary text-capitalize" type="button">
+          View Allocation
+        </button>
+
+        <button class="btn btn-secondary text-capitalize" type="button">
+          Merge Allocation
+        </button>
+
+        <button class="btn btn-secondary text-capitalize" type="button">
+          Release
+        </button>
+
+        <button class="btn btn-secondary text-capitalize" type="button">
+          Delete Allocation
+        </button>
+
+        <button class="btn btn-secondary text-capitalize mr-3" type="button"
+        (click)="unselectItems()">
+          <i class="fa fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <div style="overflow-x: auto; width: 100% !important;">
+      <p-table class="wa-items"
+        [columns]="selectedColumns"
+        [value]="warehouseItems"
+        selectionMode="multiple" 
+        [(selection)]="selectedItems"
+        >
+
+        <ng-template pTemplate="colgroup" let-columns>
+          <colgroup>
+            <col *ngFor="let col of columns" [style]="{width: col.field !== 'check' ? density + 'px' : '40px'}">
+          </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns">
+              {{col.header}}
+            </th>
+            <th style="width:100px">Action</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
+            <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
+              
+              <td *ngFor="let col of columns" 
+              [ngClass]="rowData[col.class] === 'info-main' ? 'info-main': ''">
+                  {{rowData[col.field]}} {{rowData[col.class]}}
+              </td>
+              <td>
+                <i class="ml-3 fa fa-ellipsis-v"></i>
+              </td>
+            </tr>
+        </ng-template>
+
+      </p-table>
+    </div>
+
+    
 </div>

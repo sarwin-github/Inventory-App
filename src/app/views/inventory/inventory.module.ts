@@ -7,11 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { MultiSelectModule } from 'primeng/multiselect';
+
 import { WarehouseTotalComponent } from './warehouse/warehouse-total/warehouse-total.component';
 import { WarehouseItemsComponent } from './warehouse/warehouse-items/warehouse-items.component';
+
 const primengModules = [
 	TableModule,
-  TooltipModule
+  TooltipModule,
+  MultiSelectModule
 ];
 
 @NgModule({

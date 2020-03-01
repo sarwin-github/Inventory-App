@@ -32,7 +32,7 @@
 			"ageWeeks": 1,
 			"unitsOnOrder": 0,
 			"department": "Womens",
-			"subcategory": "W Walkshort S/S"
+			"subcategory": "W Walkshorts S/S"
 		},
 		{
 			"unreleasedAllocation": "100002",
@@ -49,7 +49,24 @@
 			"ageWeeks": 12,
 			"unitsOnOrder": 0,
 			"department": "Womens",
-			"subcategory": "W Walkshort S/S"
+			"subcategory": "W Walkshorts S/S"
+		},
+		{
+			"unreleasedAllocation": "(multiple)",
+			"scheduledRelease": "(multiple)",
+			"styleCode": "C-789-NVY",
+			"styleName": "Journey Pant Navy",
+			"priceStatus": "REG",
+			"availableWHUnits": 100,
+			"allocatedUnits": 200,
+			"instoreWksCover": 8,
+			"styleWksCover": 10,
+			"thisWeekUnitSold": 35,
+			"lastWeekUnitsSold": 30,
+			"ageWeeks": "CORE",
+			"unitsOnOrder": 400,
+			"department": "Womens",
+			"subcategory": "W Structured S/S"
 		}
 	]
 }
