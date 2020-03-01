@@ -52,6 +52,23 @@
 			"subcategory": "W Walkshorts S/S"
 		},
 		{
+			"unreleasedAllocation": "100003",
+			"scheduledRelease": "10/03/2020",
+			"styleCode": "B-456-Orange",
+			"styleName": "Boris Short Orange",
+			"priceStatus": "MD1",
+			"availableWHUnits": 54,
+			"allocatedUnits": 80,
+			"instoreWksCover": 10,
+			"styleWksCover": 18,
+			"thisWeekUnitSold": 30,
+			"lastWeekUnitsSold": 10,
+			"ageWeeks": 13,
+			"unitsOnOrder": 0,
+			"department": "Mens",
+			"subcategory": "M Walkshorts S/M"
+		},
+		{
 			"unreleasedAllocation": "(multiple)",
 			"scheduledRelease": "(multiple)",
 			"styleCode": "C-789-NVY",

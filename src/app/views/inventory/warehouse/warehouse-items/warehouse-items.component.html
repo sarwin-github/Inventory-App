@@ -1,15 +1,17 @@
 <div class="card card-body">
+    <!-- FILTER FOR DESKTOP-->
     <div class="d-none d-sm-none d-md-block">
         <div class="float-left">
-            <div class="text-right mb-2">
+            <div class="mb-2">
             	<div class="pl-0">
             		<p-multiSelect 
-                [style]="{minWidth: '100px', border: 'none'}"
-                [options]="listColumns"
-                [(ngModel)]="selectedColumns" 
+                [style]="{minWidth: '120px' }"
+                [options]="filterBy"
+                [(ngModel)]="selectedFilter" 
+                (select)="dt.filterGlobal($event.target.value, 'contains')"
                 selectedItemsLabel="Filter By" 
                 defaultLabel="Filter By"
-                optionLabel="header"></p-multiSelect>
+                optionLabel="filter"></p-multiSelect>
             	</div>
             </div>
         </div>
@@ -41,16 +43,17 @@
         </div>
     </div>
 
+    <!-- FILTER FOR MOBILE-->
     <div class="d-block d-sm-block d-md-none text-center">
         <div class="d-block">
           <div class="pl-0">
             <p-multiSelect 
             [style]="{minWidth: '100px', border: 'none'}"
-            [options]="listColumns"
-            [(ngModel)]="selectedColumns" 
+            [options]="filterBy"
+            [(ngModel)]="filterBy" 
             selectedItemsLabel="Filter By" 
             defaultLabel="Filter By"
-            optionLabel="header"></p-multiSelect>
+            optionLabel="filterBy"></p-multiSelect>
           </div>
         </div>
 
@@ -122,36 +125,50 @@
         selectionMode="multiple" 
         [(selection)]="selectedItems"
         >
-
-        <ng-template pTemplate="colgroup" let-columns>
-          <colgroup>
-            <col *ngFor="let col of columns" [style]="{width: col.field !== 'check' ? density + 'px' : '40px'}">
-          </colgroup>
-        </ng-template>
         <ng-template pTemplate="header" let-columns>
           <tr>
-            <th *ngFor="let col of columns">
+            <th class="info-main" style="width:100px;">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <th *ngFor="let col of columns" [ngClass]="col.class" 
+            [ngStyle]="{width: density + 'px' }">
               {{col.header}}
             </th>
-            <th style="width:100px">Action</th>
+
+            <th class="info-main" style="width:100px;">Action</th>
           </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-rowData let-columns="columns" let-rowIndex="rowIndex">
-            <tr [pSelectableRow]="rowData" [pSelectableRowIndex]="rowIndex">
-              
-              <td *ngFor="let col of columns" 
-              [ngClass]="rowData[col.class] === 'info-main' ? 'info-main': ''">
-                  {{rowData[col.field]}} {{rowData[col.class]}}
+            <tr [pSelectableRow]="rowData" >
+              <!-- SELECTOR -->
+              <td class="info-main">
+                  <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
               </td>
-              <td>
-                <i class="ml-3 fa fa-ellipsis-v"></i>
+
+              <td *ngFor="let col of columns" 
+                [ngClass]="(col.field !== 'unreleasedAllocation'
+                && col.field !== 'scheduledRelease' 
+                && col.field !== 'styleCode' 
+                && col.field !== 'styleName' ) && selectedItems?.indexOf(rowData) > -1 ? '' : 'info-main'"
+              >
+                  {{rowData[col.field]}} 
+              </td>
+
+              <td style="width: 100px !important;">
+                <i class="ml-3 fa fa-ellipsis-v" id="itemAction" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 100% !important;"></i>
+
+                <div class="dropdown-menu" aria-labelledby="itemAction">
+                  <a class="dropdown-item">New Alloc</a>
+                  <a class="dropdown-item">View Alloc</a>
+                  <a class="dropdown-item">Merge Alloc</a>
+                  <a class="dropdown-item">Release</a>
+                  <a class="dropdown-item">Del. Alloc</a>
+                </div>
               </td>
             </tr>
         </ng-template>
 
       </p-table>
     </div>
-
-    
 </div>

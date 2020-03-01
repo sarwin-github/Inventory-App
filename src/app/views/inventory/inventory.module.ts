@@ -12,10 +12,13 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { WarehouseTotalComponent } from './warehouse/warehouse-total/warehouse-total.component';
 import { WarehouseItemsComponent } from './warehouse/warehouse-items/warehouse-items.component';
 
+import { SharedModule } from '../../shared/shared-pipe.module';
+
 const primengModules = [
 	TableModule,
   TooltipModule,
-  MultiSelectModule
+  MultiSelectModule,
+  SharedModule
 ];
 
 @NgModule({
