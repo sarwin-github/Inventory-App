@@ -11,27 +11,32 @@ export class HeaderInventoryComponent implements OnInit {
 
 	ngOnInit(): void {
 		// Hide submenus
-		$('#body-row .collapse').collapse('hide'); 
+		//$('#body-row .collapse').collapse('hide'); 
 
 		// Collapse/Expand icon
 		document.getElementById('collapse-icon').classList.add('fa-times');
 	}
 
 	SidebarCollapse () {
-		$('.menu-collapsed').toggleClass('d-none');
-		$('.sidebar-submenu').toggleClass('d-none');
-		$('.submenu-icon').toggleClass('d-none');
-		$('#sidebar-container').toggleClass('sidebar-expanded sidebar-collapsed');
+		// set image on collapse
+		this.setImageCollapse();
 
-		// Treating d-flex/d-none on separators with title
-		var SeparatorTitle = $('.sidebar-separator-title');
-		if ( SeparatorTitle.hasClass('d-flex') ) SeparatorTitle.removeClass('d-flex');
-		else SeparatorTitle.addClass('d-flex');
-	
+		// set text collapse
+		this.setTextIconCollapse();
+	}
+
+	setTextIconCollapse(){
+		document.getElementsByClassName('menu-collapsed')[0].classList.toggle('d-none');
+		document.getElementsByClassName('sidebar-submenu')[0].classList.toggle('d-none');
+
+		let sidebarContainer = document.getElementById('sidebar-container');
+		let collapseIcon = document.getElementById('collapse-icon');
+
+		sidebarContainer.classList.toggle('sidebar-expanded');
+		sidebarContainer.classList.toggle('sidebar-collapsed');
 
 		// Collapse/Expand icon
-		$('#collapse-icon').toggleClass('fa-bars');
-		this.setImageCollapse();
+		collapseIcon.classList.toggle('fa-bars');
 	}
 
 	setImageCollapse(){

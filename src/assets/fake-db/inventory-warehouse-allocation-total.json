@@ -1,0 +1,38 @@
+{
+	"data":[
+		{
+			"inventory": "Full-Price",
+			"retailWarehouse":{
+				"costOnHand": 900000,
+				"retailOnHand": 4000000
+			},
+			"retailStores":{
+				"costOnHand": 9000000,
+				"retailOnHand": 40000000,
+				"weeksCover": 11
+			},
+			"retailTotal":{
+				"costOnHand": 9900000,
+				"retailOnHand": 44000000,
+				"weeksCover": 14
+			}
+		},
+		{
+			"inventory": "Mark Down",
+			"retailWarehouse":{
+				"costOnHand": 100000,
+				"retailOnHand": 200000
+			},
+			"retailStores":{
+				"costOnHand": 1000000,
+				"retailOnHand": 2000000,
+				"weeksCover": 7.2
+			},
+			"retailTotal":{
+				"costOnHand": 11000000,
+				"retailOnHand": 2200000,
+				"weeksCover": 9
+			}
+		}
+	]
+}

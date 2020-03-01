@@ -1,5 +1,12 @@
+@import "/assets/styles/primeng/primeng-table.scss";
+@import "/assets/styles/primeng/primeng-tooltip.scss";
+
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+body { margin: 0; font-family: 'Spartan', sans-serif; }
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Lora', sans-serif !important; 
+	font-weight: 600 !important;
+}
 
 ::-webkit-scrollbar {
 	width: 8px;

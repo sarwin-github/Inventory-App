@@ -1,0 +1,55 @@
+{
+	"data": [
+		{
+			"unreleasedAllocation": "100001",
+			"scheduledRelease": "15/03/2020",
+			"styleCode": "A-123-WHT",
+			"styleName": "Elsa Tee White",
+			"priceStatus": "REG",
+			"availableWHUnits": 300,
+			"allocatedUnits": 100,
+			"instoreWksCover": 6.4,
+			"styleWksCover": 12,
+			"thisWeekUnitSold": 45,
+			"lastWeekUnitsSold": 55,
+			"ageWeeks": 6,
+			"unitsOnOrder": 0,
+			"department": "Womens",
+			"subcategory": "W Tees S/S"
+		},
+		{
+			"unreleasedAllocation": "",
+			"scheduledRelease": "",
+			"styleCode": "B-456-BLK",
+			"styleName": "Boris Short Black",
+			"priceStatus": "REG",
+			"availableWHUnits": 200,
+			"allocatedUnits": 0,
+			"instoreWksCover": 0,
+			"styleWksCover": 0,
+			"thisWeekUnitSold": 0,
+			"lastWeekUnitsSold": 0,
+			"ageWeeks": 1,
+			"unitsOnOrder": 0,
+			"department": "Womens",
+			"subcategory": "W Walkshort S/S"
+		},
+		{
+			"unreleasedAllocation": "100002",
+			"scheduledRelease": "10/03/2020",
+			"styleCode": "B-456-RED",
+			"styleName": "Boris Short Red",
+			"priceStatus": "MD1",
+			"availableWHUnits": 30,
+			"allocatedUnits": 50,
+			"instoreWksCover": 10,
+			"styleWksCover": 14,
+			"thisWeekUnitSold": 20,
+			"lastWeekUnitsSold": 15,
+			"ageWeeks": 12,
+			"unitsOnOrder": 0,
+			"department": "Womens",
+			"subcategory": "W Walkshort S/S"
+		}
+	]
+}

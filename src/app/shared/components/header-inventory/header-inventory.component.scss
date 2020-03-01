@@ -28,9 +28,6 @@
     height: 45px;
     padding-left: 30px;
 }
-.sidebar-submenu {
-    font-size: 0.9rem;
-}
 
 /* Separators */
 .sidebar-separator-title {
@@ -65,7 +62,7 @@
 
 
 .fa-times{
-  font-size: 23px;
+  font-size: 20px;
   font-weight: 300 !important;
 }
 
@@ -76,12 +73,32 @@ a{
 
 .sidebar-item{
   background: white;
+  font-size: 14px !important;
+
+  span{
+    font-weight: 600;
+  }
 
   &:hover{
     span{
       border-bottom: dotted #bdbdbd 2px;
       border-spacing: 15px;
     }
+  }
+}
+
+.sidebar-submenu{
+  &-item{
+    font-size: 13px !important;
+
+    span{
+      color: #4B515D !important;
+    }
+  }
+
+  &-selected{
+    border-bottom: dotted #bdbdbd 2px;
+    padding-bottom: 10px;
   }
 }
 
