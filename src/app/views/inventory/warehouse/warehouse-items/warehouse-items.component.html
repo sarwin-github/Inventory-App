@@ -48,12 +48,13 @@
         <div class="d-block">
           <div class="pl-0">
             <p-multiSelect 
-            [style]="{minWidth: '100px', border: 'none'}"
+            [style]="{minWidth: '120px' }"
             [options]="filterBy"
-            [(ngModel)]="filterBy" 
+            [(ngModel)]="selectedFilter" 
+            (ngModelChange)="reloadItems()"
             selectedItemsLabel="Filter By" 
             defaultLabel="Filter By"
-            optionLabel="filterBy"></p-multiSelect>
+            optionLabel="filter"></p-multiSelect>
           </div>
         </div>
 
@@ -118,7 +119,7 @@
       </div>
     </div>
 
-    <div style="overflow-x: auto; width: 100% !important;">
+    <div style="overflow-y: hidden !important; overflow-x: auto; width: 100% !important;">
       <p-table class="wa-items"
         [columns]="selectedColumns"
         [value]="warehouseItems"
